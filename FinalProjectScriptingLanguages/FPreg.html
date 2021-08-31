@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            @import "compass/css3";
+
+            * { box-sizing: border-box; margin: 0; padding:0; }
+
+            body
+            {
+                background: url(student.jpg) no-repeat center center fixed; 
+                -webkit-background-size: cover;
+                -moz-background-size: cover;
+                -o-background-size: cover;
+                background-size: cover;
+                height: 750px;
+            }
+            html 
+            {
+                background: #95a5a6;
+                background-image: url(http://subtlepatterns2015.subtlepatterns.netdna-cdn.com/patterns/dark_embroidery.png);
+                font-family: 'Helvetica Neue', Arial, Sans-Serif;
+            }
+            
+            .loginbox 
+            {
+                position: relative;
+                margin: 0 auto;
+                background: #ecf0f1;
+                width: 350px;
+                border-radius: 5px;
+                box-shadow: 3px 3px 10px #333;
+                padding: 15px;
+            }
+                
+            h2 
+            {
+                text-align: center;
+                font-weight: 200;
+                font-size: 2em;
+                margin-top: 10px;
+                color: #34495e;
+            }
+                
+            .form 
+            {
+                padding-top: 20px;
+            } 
+            input[type="text"],
+            input[type="password"],
+                
+            .button 
+            {
+                width: 80%;
+                margin-left: 10%;
+                margin-bottom: 25px;
+                height: 40px;
+                border-radius: 5px;
+                outline: 0;
+                -moz-outline-style: none;
+            }
+            .button:hover
+            {
+                opacity: 0.8;
+            }
+                
+            input[type="text"],
+            input[type="password"] 
+            {
+                border: 1px solid #bbb;
+                padding: 0 0 0 10px;
+                font-size: 14px;
+            }
+                &:focus 
+                {
+                border: 1px solid #3498db;
+                }
+            
+                
+            a 
+            {
+                text-align: center;
+                font-size: 10px;
+                color: #3498db;
+            }
+                    
+            p
+            {
+                padding-bottom: 10px;
+            }
+                           
+            .button 
+            {
+                background: #e74c3c;
+                border:none;
+                color: white;
+                font-size: 18px;
+                font-weight: 200;
+                cursor: pointer;
+                transition: box-shadow .4s ease;
+            }
+                    
+            .button:hover 
+            {
+                box-shadow: 1px 1px 5px #555;  
+            }
+                    
+            .button:active 
+            {
+                 box-shadow: 1px 1px 7px #222;  
+            }
+                          
+            .button:after{
+            content:'';
+            position:absolute;
+            top: 0;
+            left: 0;
+            right: 0;    
+            background:-webkit-linear-gradient(left,               
+                    #27ae60 0%, #27ae60 20%, 
+                    #8e44ad 20%, #8e44ad 40%,
+                    #3498db 40%, #3498db 60%,
+                    #e74c3c 60%, #e74c3c 80%,
+                    #f1c40f 80%, #f1c40f 100%
+                    );
+            background:-moz-linear-gradient(left,               
+                    #27ae60 0%, #27ae60 20%, 
+                    #8e44ad 20%, #8e44ad 40%,
+                    #3498db 40%, #3498db 60%,
+                    #e74c3c 60%, #e74c3c 80%,
+                    #f1c40f 80%, #f1c40f 100%
+                    );
+            height: 5px;
+            border-radius: 5px 5px 0 0;
+            }
+            .log:hover
+            {
+                opacity: 0.8;
+            }    
+        </style>
+        <script>
+            function validate()
+            {
+                var name = document.form.un.value
+                var pass = document.form.pword.value
+                var age = document.form.age.value
+                var phone = document.form.pn.value
+                
+                if(name == "")
+                {
+                    alert("Name Field is empty")
+                    return false;
+                }
+                
+                //Age verification begins
+                if(age == "")
+                {
+                    alert("Age Field is empty")
+                    return false;
+                }
+                if(isNaN(age))
+                {
+                    alert("Age must be in numberic form")
+                    return false;
+                }
+                else if(age<18)
+                {
+                    alert("Must be 18+ to register")
+                    return false;
+                }
+                //Age verification ends
+
+                //Phone number verification begins
+                if(phone == "")
+                {
+                    alert("Phone Field is empty")
+                    return false;
+                }
+                if(isNaN(phone))
+                {
+                    alert("Phone number must be numeric")
+                    return false;
+                }
+                else if(phone.length!=10)
+                {
+                    alert("Phone number must be 10 digits")
+                    return false;
+                } 
+                //Phone number validation ends
+                if(pass == "")
+                {
+                    alert("Password Field is empty")
+                    return false;
+                }
+                return true;
+            }
+        </script>
+    </head>
+    <body>
+        <form name="form" action="test1.php" method="POST">
+            <div class="loginbox">
+                <h2>Register</h2>
+                
+                <div class="form">
+                <input type="text" placeholder="Username" name="un" id="uname">
+                <input type="text" placeholder="Age" name="age" id="age">
+                <input type="text" placeholder="Phone Number" name="pn" id="pn">
+                <input type="password" placeholder="Password" name="pw" id="pword">
+                <input type="submit" class="button" value="Sign up" onclick="return validate()">
+                <p style="margin-left: 45px;">Already have an account? <a href="FPlogin.html" class="log" style="font-size: 15px;">Log in</a></p>
+                </div>
+            </div>
+        </form>
+    </body>
+</html>
